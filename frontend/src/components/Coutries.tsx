@@ -2,10 +2,17 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_COUNTRIES } from "../api/example";
 import CountryCard from "./CountryCard";
 
-export type CountryProps = {
+type Continent = {
+    id: number;
     name: string;
-    emoji?: string;
+}
+
+export type CountryProps = {
+    id: number;
     code: string;
+    name: string;
+    emoji: string;
+    continent: Continent
 };
 
 const Countries = () => {
@@ -20,8 +27,8 @@ const Countries = () => {
         <>
             <h1 className="text-2xl font-bold mb-4">All Countries</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {data?.countries.map(({ name, code }: CountryProps) => (
-                    <CountryCard key={name} name={name} code={code} />
+                {data?.countries.map((country: CountryProps) => (
+                    <CountryCard key={country.id} {...country} />
                 ))}
             </div>
         </>
