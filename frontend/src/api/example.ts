@@ -34,4 +34,30 @@ export const GET_COUNTRY = gql`
 }
 `;
 
+//all continent
+export const GET_ALL_CONTINENTS = gql`
+  query Continents {
+    continents {
+      id
+      name
+    }
+  }
+`;
+
+
+//add Country
+export const ADD_COUNTRY = gql`
+  mutation AddCountry($data: NewCountryInput!) {
+  addCountry(data: $data) {
+    id
+    code
+    name
+    emoji
+    continent {
+      id
+      name
+    }
+  }
+}
+`;
 

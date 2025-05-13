@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { GET_ALL_COUNTRIES } from "../api/example";
 import CountryCard from "./CountryCard";
+import AddNewCountry from "./AddNewCountry";
 
 type Continent = {
     id: number;
@@ -26,6 +27,8 @@ const Countries = () => {
     return (
         <>
             <h1 className="text-2xl font-bold mb-4">All Countries</h1>
+            {/* formulaire de creation de pays */}
+            <AddNewCountry/>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {data?.countries.map((country: CountryProps) => (
                     <CountryCard key={country.id} {...country} />
